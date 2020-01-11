@@ -55,6 +55,9 @@ def randargs(log_ignore=None):
 
 
 class ArgumentRandomiser(random.Random):
+    def __new__(cls, *args, **kwargs):
+        return super(ArgumentRandomiser, cls).__new__(cls, random.random())
+
     def __init__(self, *args, **kwargs):
         super().__init__(x=kwargs.get('seed'))
 
